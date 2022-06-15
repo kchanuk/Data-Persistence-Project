@@ -13,6 +13,8 @@ public class MenuUIHandler : MonoBehaviour
 {
     public TextMeshProUGUI bestScoreText;
     public TextMeshProUGUI playerNameText;
+    public GameObject pleaseText;
+
 
 
     void Start()
@@ -23,21 +25,26 @@ public class MenuUIHandler : MonoBehaviour
     }
     public void StartNew()
     {
-        var text=playerNameText.text;
-        if(!string.IsNullOrEmpty(text))
+        string userName=playerNameText.text.ToString();
+
+        if(userName.Length>1)
         {
-            ScoreManager.Instance.name=playerNameText.text;
+            ScoreManager.Instance.playername=userName;
             SceneManager.LoadScene(1);
+        }
+        else
+        {
+            pleaseText.SetActive(true);
         }
     }
 
     public void Exit()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
             EditorApplication.ExitPlaymode();
-        #else
-            ApplicationException.Quit();
-        #endif
+#else
+            Application.Quit();
+#endif
 
     }
 }

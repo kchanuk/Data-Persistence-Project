@@ -7,8 +7,10 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
-    public string name;
+    public string name; 
     public int score;
+
+    public string playername;
 
     private void Awake()
     {

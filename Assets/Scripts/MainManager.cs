@@ -80,6 +80,7 @@ public class MainManager : MonoBehaviour
         if(m_Points>ScoreManager.Instance.score)
         {
             ScoreManager.Instance.score=m_Points;
+            ScoreManager.Instance.name=ScoreManager.Instance.playername;
             ScoreManager.Instance.SaveScore();
         }
         
